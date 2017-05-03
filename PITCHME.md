@@ -49,4 +49,20 @@ An app’s config is everything that is likely to vary between deploys (staging,
 
 +++
 
+### External configuration by file
+
+- Can be injected through a properties file
+- Prior to Spring Boot the config file had to be referenced
+
+```java
+@PropertySource("file:/path/to/simple.properties")
+public class Application {
+```
+
+```java
+    @Value("${spring.application.name}")
+    private String appName;
+```
+
+
 
