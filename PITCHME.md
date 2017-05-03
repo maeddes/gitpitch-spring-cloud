@@ -85,7 +85,7 @@ public class Application {
 - Spring Boot allows you to use yaml files instead of properties-
 - Both examples will work
 
-```file
+```yaml
 application.name=a-bootiful-client
 ```
 ```yaml
@@ -160,4 +160,118 @@ class MessageRestController {
 
 +++
 
-# Config Server to address limitations
+# Config Server 
+### to address limitations
+
++++
+
+- provides dynamic properties to the clients during runtime
+- requires a git repository (online or file based)
+- serves as proxy for configuration keys and values 
+- http://cloud.spring.io/spring-cloud-config/
+
++++
+
+![Config_Server](https://docs.pivotal.io/spring-cloud-services/1-0/images/config-server/config-server-fig1.png)
+
++++
+
+## Java
+
+```java
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.config.server.EnableConfigServer;
+
+@SpringBootApplication
+@EnableConfigServer
+public class ConfigServerApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ConfigServerApplication.class, args);
+	}
+}
+```
++++
+
+## application.yml
+
+```yaml
+server:
+  port: 8888
+
+spring:
+  cloud:
+    config:
+      server:
+        git :
+          uri: https://github.com/maeddes/config-server
+```
+
++++
+
+Embed
+
+https://github.com/maeddes/config-server
+
++++
+
+## Validation
+http://localhost:8888/config-client/master
+
+```json
+{
+  "name": "config-client",
+  "profiles": [
+    "master"
+  ],
+  "label": null,
+  "version": null,
+  "state": null,
+  "propertySources": [
+    {
+      "name": "https://github.com/maeddes/config-server/config-client.properties",
+      "source": {
+        "config.property": "43"
+      }
+    }
+  ]
+}
+```
++++
+
+# Config client
+
++++
+
+## Java
+
+```java
+@RestController
+@RefreshScope
+class ConfigServerRestController{
+	
+	@Value("${config.property: Default}")
+	private String configProperty;
+
+	@RequestMapping("/valueFromServer")
+	String valueFromServer() {
+		return this.configProperty;
+	}
+	
+	
+}
+```
+
++++
+
+## bootstrap.yml
+
+```yaml
+spring:
+  application:
+    name: config-client
+    cloud:
+      config:
+        uri: http://localhost:8888
+```
