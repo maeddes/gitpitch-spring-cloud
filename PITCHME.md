@@ -85,7 +85,7 @@ public class Application {
 - Spring Boot allows you to use yaml files instead of properties-
 - Both examples will work
 
-```properties
+```file
 application.name=a-bootiful-client
 ```
 ```yaml
@@ -93,6 +93,8 @@ application:
     name: a-bootiful-client
 ```
 +++
+
+### External configuration by file with Spring Boot
 
 
 
