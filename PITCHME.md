@@ -275,3 +275,20 @@ spring:
       config:
         uri: http://localhost:8888
 ```
++++
+
+## Updates
+
+- To make a runtime change you need to update it in the git repo first
+- You can validate with the config server URL, if it has been picked up
+- The clients will not update automatically
+- It requires a POST action to the http://127.0.0.1:8080/refresh endpoint
+
+```yaml
+mhs@R2-D2:~$ curl -d{} http://127.0.0.1:8080/refresh
+["config.property"]mhs@R2-D2:~$ 
+```
+
++++
+
+Cloud Service Bus
