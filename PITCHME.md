@@ -63,6 +63,37 @@ public class Application {
     @Value("${spring.application.name}")
     private String appName;
 ```
++++
+
+### External configuration by file
+
+- Properties can be set with a default value, which will be picked in case property is not found or set
+- In case no default is defined and the property can't be found the app won't start
+
+```java
+    @Value("${spring.application.name: Default Name}")
+    private String appName;
+```
+```
+2017-05-03 13:55:26.342 [..] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'messageRestController': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'spring.application.name' in value "${spring.application.name}"
+```
++++
+
+### External configuration by file with Spring Boot
+
+- Spring Boot will read the properties in `src/main/resources/application.properties` by default
+- Spring Boot allows you to use yaml files instead of properties-
+- Both examples will work
+
+```properties
+application.name=a-bootiful-client
+```
+```yaml
+application:
+    name: a-bootiful-client
+```
++++
+
 
 
 
