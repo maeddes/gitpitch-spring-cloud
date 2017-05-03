@@ -12,7 +12,7 @@
 * Hystrix
 * Spring Boot vs Spring Cloud (Services)
 * PCF Dev adjustments
- 
+
 ---
 
 ## Sources
@@ -22,8 +22,8 @@
  * slideshare
  * github
  * https://12factor.net
- 
---- 
+
+---
 
 # Config Server
 
@@ -94,8 +94,70 @@ application:
 ```
 +++
 
-### External configuration by file with Spring Boot
+### External configuration by file with Spring Boot- POJO
 
+```java
+@Component
+@ConfigurationProperties("application")
+class ApplicationProperties{
 
+	private String name;
 
+	public String getName() {
+		return name;
+	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
+
+}
+```
+
++++
+
+### External configuration by file with Spring Boot- POJO Invocation
+
+```java
+@RestController
+class MessageRestController {
+
+    @Autowired
+    private ApplicationProperties ap;
+
+    @RequestMapping("/appNameViaPOJO")
+    String appNameViaPOJO() {
+        return this.ap.getName();
+    }
+}
+```
+
++++
+
+# Remember Actuator?
+
++++
+
+### Point the browser to: http://localhost:8080/configprops
+
+```json
+"applicationProperties": {
+  "prefix": "application",
+  "properties": {
+    "name": "a-bootiful-client"
+  }
+},
+```
+
++++
+
+### Limitations of current approach
+
+- restart required to change the property files
+- no traceability of changes
+- de-centralized configuration
+- no ootb security/encryption mechanism
+
++++
+
+# Config Server to address limitations
