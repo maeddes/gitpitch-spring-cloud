@@ -361,7 +361,46 @@ eureka:
 
 +++
 
+# start.spring.io
+
+-
+
++++
+
+```java
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+
+@SpringBootApplication
+@EnableEurekaClient
+public class MhsEurekaServiceApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MhsEurekaServiceApplication.class, args);
+	}
+}
+```
+
 ### Eureka Service
 
 +++
 
+
+---
+
+# Reading List
+
++++
+
+- https://spring.io/blog/2015/01/20/microservice-registration-and-discovery-with-spring-cloud-and-netflix-s-eureka
+- https://docs.pivotal.io/spring-cloud-services/1-3/common/service-registry/writing-client-applications.html
+- https://spring.io/guides/gs/service-registration-and-discovery/
+- https://www.slideshare.net/AndreasFalk2/cloud-foundry-meetup-stuttgart-2017-spring-cloud-development
+- https://www.innoq.com/de/articles/2016/12/microservices-a-la-netflix/
+- http://cloud.spring.io/spring-cloud-netflix/
+- http://callistaenterprise.se/blogg/teknik/2015/04/10/building-microservices-with-spring-cloud-and-netflix-oss-part-1/
+- http://cloud.spring.io/spring-cloud-netflix/spring-cloud-netflix.html
+- http://stackoverflow.com/questions/31976236/whats-the-difference-between-enableeurekaclient-and-enablediscoveryclient
+- http://www.baeldung.com/spring-cloud-netflix-eureka
+- http://www.baeldung.com/intro-to-feign
