@@ -292,3 +292,76 @@ mhs@R2-D2:~$ curl -d{} http://127.0.0.1:8080/refresh
 +++
 
 Cloud Service Bus
+
+---
+
+# Service Registry
+
++++
+
+### Review Microservices
+
+- Microservice are meant to run independent
+- Mulitple services are allowed to run distributed and in parallel
+- To enable communication the services need to know how to find each other
+- Manual configuration can be a hell of a task
+
++++ 
+
+### Alternative Service Discovery and Registry
+
+- 
+
++++
+
+### High - Level Architecture
+
+![Eureka](https://docs.pivotal.io/spring-cloud-services/1-2/images/service-registry/Netflix-Eureka-d1.png)
+(javaworld.com)
+
++++
+
+### Eureka Server
+
++++
+
+### Java
+
+```java
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+
+@EnableEurekaServer
+@SpringBootApplication
+public class ServiceEurekaApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ServiceEurekaApplication.class, args);
+	}
+}
+```
+
++++
+
+### application.yml
+
+```yaml
+server:
+  port: 8761
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+```
++++
+
+(image goes here)
+
++++
+
+### Eureka Service
+
++++
+
