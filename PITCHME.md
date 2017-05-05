@@ -579,6 +579,59 @@ class ServiceInstanceRestController{
 
 ---
 
+# Resilience
+
++++
+
+![Hystrix](https://netflix.github.com/Hystrix/images/hystrix-logo-tagline-850.png)
+
++++
+
+#Hystrix 
+
+- Hystrix Dashboard
+- Hystrix Stream
+- Circuit Breaker
+
++++
+
+```java
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
+
+@SpringBootApplication
+@EnableHystrixDashboard
+public class MhsHystrixDashboardApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MhsHystrixDashboardApplication.class, args);
+	}
+}
+```
+
++++
+
+http://localhost:8080/hystrix
+![Dashboard](http://ryanjbaxter.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-07-at-9.28.44-AM.png)
+
++++
+
+```java
+@Service 
+class PotentiallyFailingService{
+	
+	public int getNumber() throws Exception{
+		if (Math.random() > .5){
+			Thread.sleep(1000);
+			throw new RuntimeException("Service Failed!");
+		}
+		return 1;
+	}
+	
+}
+```
+
 # Reading List
 
 +++
