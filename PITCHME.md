@@ -526,6 +526,54 @@ spring:
 
 +++
 
+--- what is Feign?
+
++++
+
+```java
+
+...
+import org.springframework.cloud.netflix.feign.EnableFeignClients;
+import org.springframework.cloud.netflix.feign.FeignClient;
+...
+
+@EnableDiscoveryClient
+@SpringBootApplication
+@EnableFeignClients
+public class MhsEurekaConsumerApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MhsEurekaConsumerApplication.class, args);
+	}
+}
+```
+
++++
+
+```java
+@FeignClient("mhs-service")
+interface ServiceClient{
+	@RequestMapping(value = "/service", method = RequestMethod.GET)
+	String service();
+	
+}
+
+@RestController
+class ServiceInstanceRestController{
+
+    @Autowired
+    private ServiceClient serviceClient;
+
+    @RequestMapping("/serviceInvocation")
+    public String serviceInvocation(){
+    	
+    	return this.serviceClient.service();
+    }
+
+}
+```
+
++++
 
 
 
