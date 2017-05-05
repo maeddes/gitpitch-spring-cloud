@@ -616,6 +616,7 @@ http://localhost:8080/hystrix
 ![Dashboard](http://ryanjbaxter.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-07-at-9.28.44-AM.png)
 
 +++
+### Failing Service
 
 ```java
 @Service 
@@ -632,6 +633,94 @@ class PotentiallyFailingService{
 }
 ```
 
++++
+### Failing Service with Fallback
+
+```java
+@Service 
+class PotentiallyFailingService{
+	
+	public int fallback(){  // requires same signature as getNumber
+		return 2;
+	}
+	
+	@HystrixCommand(fallbackMethod = "fallback")
+	public int getNumber() throws Exception{
+		if (Math.random() > .5){
+			Thread.sleep(1000);
+			throw new RuntimeException("Service Failed!");
+		}
+		return 1;
+	}
+	
+}
+```
+
++++
+
+### REST Controller
+
+```java
+@RestController
+class ConfigFileRestController {
+	
+    private final PotentialFailingService potentialFailingService;
+	
+    @Autowired
+    public ConfigFileRestController(PotentialFailingService potentialFailingService) {
+		this.potentialFailingService = potentialFailingService;
+	}
+    
+    @RequestMapping("/service")
+    String service() throws Exception {
+    	return "Number service: "+this.potentialFailingService.getNumber();
+    }
+}
+```
+
++++
+
+### Main Application
+
+```java
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+
+@SpringBootApplication
+@EnableCircuitBreaker
+public class MhsCircuitBreakerApp {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MhsHystrixDashboardApplication.class, args);
+	}
+}
+```
+
++++
+
+## Hystrix Stream
+
+- Requires enabled features Actuator and Hystrix
+- Will expose a Stream at `http://<host>:<port>/hystrix.stream`
+- Stream can then be imported to Hystrix Dashboard
+
++++
+
+## Stream
+
++++
+
+## Dashboard
+
+---
+
 # Reading List
 
 +++
@@ -647,3 +736,4 @@ class PotentiallyFailingService{
 - http://stackoverflow.com/questions/31976236/whats-the-difference-between-enableeurekaclient-and-enablediscoveryclient
 - http://www.baeldung.com/spring-cloud-netflix-eureka
 - http://www.baeldung.com/intro-to-feign
+- http://ryanjbaxter.com/2015/10/12/building-cloud-native-apps-with-spring-part-5/
