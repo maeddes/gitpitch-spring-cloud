@@ -386,6 +386,148 @@ public class MhsEurekaServiceApplication {
 
 +++
 
+# Eureka Client
+
+- Both service provider and service consumer register at Eureka server as client
+- The server will register them by the property spring.application.name
+
++++
+
+### Eureka client
+
+```java
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+
+@SpringBootApplication
+@EnableEurekaClient
+public class MhsEurekaServiceApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MhsEurekaServiceApplication.class, args);
+	}
+}
+
+...
+}
+```
+
++++
+
+### Exposed service
+
+```java
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+
+@RestController
+class ConfigFileRestController {
+	
+    @RequestMapping("/service")
+    String service() {
+        return "Service exposed to Eureka";
+    }
+}
+```
+
++++
+
+### bootstrap.yml
+
+```yaml
+spring:
+  application:
+    name: mhs-service
+```
+
++++
+
+### application.yml
+
+```yaml
+server:
+  port: 0
+```
+
+- The service will be bound to a random port
+- Port information will not be exposed to client directly
+- Application is supposed to be lookup up by id only
+
++++
+
+# Service Consumer
+
++++
+
+### Java Header part
+
+```java
+
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+...
+
+@EnableDiscoveryClient
+@SpringBootApplication
+public class MhsEurekaConsumerApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MhsEurekaConsumerApplication.class, args);
+	}
+}
+```
+
++++
+
+### Java functional part
+
+```java
+@RestController
+class ServiceInstanceRestController{
+
+    @Autowired
+    private DiscoveryClient discoveryClient;
+
+    @RequestMapping("/serviceList")
+    public String serviceList(){
+            
+        return this.discoveryClient.getServices().toString();
+    }
+
+    @RequestMapping("/service-instances/{applicationName}")
+    public List<ServiceInstance> serviceInstancesByApplicationName(
+            @PathVariable String applicationName) {
+        return this.discoveryClient.getInstances(applicationName);
+    }
+    
+}
+```
+
++++
+
+### bootstrap.yml
+
+```yaml
+spring:
+  application:
+    name: service-consumer
+```
+
+- can also be empty or non-existent
+- client does not need to ne looked up
+- better style still ;-)
+
++++
+
+# Feign
+
++++
+
+
+
 
 ---
 
