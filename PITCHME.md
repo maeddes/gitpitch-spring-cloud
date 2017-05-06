@@ -8,10 +8,10 @@
 
 * Overview Spring Cloud 
 * Config Server
-* Eureka Service Registry
-* Hystrix
-* Spring Boot vs Spring Cloud (Services)
-* PCF Dev adjustments
+* Service Registry
+* Reslilience
+* References
+* Exercises
 
 ---
 
