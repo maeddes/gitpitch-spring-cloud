@@ -519,6 +519,23 @@ server:
 
 +++
 
+### application.yml with multiple instance support
+
+```yaml
+server:
+  port: 0
+  
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 5
+    instanceId: ${spring.application.name}:${random.value}
+```
+
+- Eureka will only allow one instance with a given id
+- A random value needs to be generated and appended
+
++++
+
 # Service Consumer
 
 +++
@@ -584,59 +601,6 @@ spring:
 
 +++
 
-# Feign
-
-+++
-
---- what is Feign?
-
-+++
-
-```java
-
-...
-import org.springframework.cloud.netflix.feign.EnableFeignClients;
-import org.springframework.cloud.netflix.feign.FeignClient;
-...
-
-@EnableDiscoveryClient
-@SpringBootApplication
-@EnableFeignClients
-public class MhsEurekaConsumerApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(MhsEurekaConsumerApplication.class, args);
-	}
-}
-```
-
-+++
-
-```java
-@FeignClient("mhs-service")
-interface ServiceClient{
-	@RequestMapping(value = "/service", method = RequestMethod.GET)
-	String service();
-	
-}
-
-@RestController
-class ServiceInstanceRestController{
-
-    @Autowired
-    private ServiceClient serviceClient;
-
-    @RequestMapping("/serviceInvocation")
-    public String serviceInvocation(){
-    	
-    	return this.serviceClient.service();
-    }
-
-}
-```
-
-+++
-
 # start.spring.io
 
 Eureka Server
@@ -649,6 +613,113 @@ Eureka Client
 Eureka Consumer
 - Eureka Discovery
 - Web
+
+---
+
+# service to service communication
+
++++
+
+Traditional way using URL
+
+```java
+@Autowired
+private EurekaClient discoveryClient;
+
+public String serviceUrl() {
+    InstanceInfo instance = discoveryClient.getNextServerFromEureka("mhs-service", false);
+    return instance.getHomePageUrl();
+}
+```
+
++++
+
+```java
+@Bean
+public RestTemplate restTemplate() {
+	return new RestTemplate();
+}
+
+@Autowired
+private RestTemplate rest;
+
+@RequestMapping("/serviceViaTemplate")
+public String serviceInvocationRT(){
+    String str = rest.getForObject(serviceUrl(), String.class);
+}
+```
+
++++
+## Direct invocations of Eureka service name
+
+- Ideally you should not have to deal with the URLs directly
+- Spring Cloud provides two improved alternatives
+  - Ribbon + REST Template
+  - Feign
+  
++++
+
+## Ribbon
+
+- Ribbon is a client side IPC library that is battle-tested in cloud
+- Provides client-side load balancing and fault tolerance
+  
++++
+
+```java
+@Bean
+@LoadBalanced
+public RestTemplate restTemplate() {
+	return new RestTemplate();
+}
+   
+@Autowired
+private RestTemplate rest;
+
+@RequestMapping("/serviceViaTemplate")
+public String serviceInvocation(){
+        return this.rest.getForObject("//mhs-service/service", String.class);
+}
+```
++++
+
+## Feign
+
+- A declarative REST client
+- To simplify HTTP client calls
+- Only reuires declaration and annotation of an interface while the actual implementation will be provisioned at runtime
+
++++
+
+```java
+@EnableFeignClients
+public class EurekaConsumerApplication 
+...
+
+@FeignClient("mhs-service")
+interface ServiceClient{
+	@RequestMapping(value = "/service", method = RequestMethod.GET)
+	String service();
+}
+
+@Autowired
+private ServiceClient serviceClient;
+
+@RequestMapping("/serviceViaFeign")
+public String serviceInvocation(){
+   	return this.serviceClient.service();
+}
+
+```
++++
+
+# start.spring.io
+
+Ribbon
+- Ribbon
+
+Feign
+- Feign
 
 ---
 
@@ -689,6 +760,12 @@ http://localhost:8080/hystrix
 ![Dashboard](img/hystrix_login.jpg)
 
 +++
+
+http://localhost:8080/hystrix
+![Failing](http://cloud.spring.io/spring-cloud-static/Camden.SR5/images/HystrixFallback.png)
+
++++
+
 ### Failing Service
 
 ```java
@@ -796,7 +873,7 @@ public class MhsCircuitBreakerApp {
 
 ![Hystrix Dashboard](img/hystrix_dashboard.jpg)
 
----
++++
 
 # start.spring.io
 
@@ -821,6 +898,7 @@ Part 1:
 - https://www.slideshare.net/AndreasFalk2/cloud-foundry-meetup-stuttgart-2017-spring-cloud-development
 - https://www.innoq.com/de/articles/2016/12/microservices-a-la-netflix/
 - http://cloud.spring.io/spring-cloud-netflix/
+- http://cloud.spring.io/spring-cloud-static/Dalston.RELEASE/
 
 +++
 
@@ -832,3 +910,4 @@ Part 2:
 - http://www.baeldung.com/spring-cloud-netflix-eureka
 - http://www.baeldung.com/intro-to-feign
 - http://ryanjbaxter.com/2015/10/12/building-cloud-native-apps-with-spring-part-5/
+- https://dzone.com/articles/spring-cloud-netflix-load-balancer-with-ribbonfeig
