@@ -34,6 +34,63 @@
 
 +++
 
+# Spring Cloud
+
+- based on Spring Boot
+- provides tools for developers to quickly build apps
+- addresses common patterns in distributed systems
+- not focused on a particular platform
+
+![Spring Cloud](http://cdn.springtutorials.com/wp-content/uploads/2015/10/spring-cloud.png)
+
++++
+
+## Patterns addressed
+
+- configuration management
+- service registry and discovery
+- resilience and service breakers
+- intelligent routing and load balancing
+- and more ...
+
++++
+
+# Spring Cloud Netflix
+
+- originated as Netflix OSS
+- based on Spring implementations
+- partially integrated into Spring Cloud projects
+- now a core project of Spring Cloud
+
++++ 
+
+## Services Provided
+
+- Eureka - service registry and discovery
+- Hystrix - circuit breaker and dashboard
+- Feign - declarative REST lient
+- Ribbon - cient-side load balancing
+- Zuul - routing & filtering
+
++++
+
+# Spring Cloud Services
+
+![SCS](https://3.bp.blogspot.com/-nvGF74M_hyY/V1zWlx_0RLI/AAAAAAAAPL0/CPwG4Azzpc4b9Kx2LhHkAxdkpqxkwLtbgCLcB/s1600/SpringCloudServices.png)
+
+- integration with Cloud Foundry
+
++++
+
+## Links
+
+- https://projects.spring.io/spring-boot/
+- http://projects.spring.io/spring-cloud/
+- http://netflix.github.io/
+- https://docs.pivotal.io/spring-cloud-services/1-3/common/
+
+---
+
 # Config Server
 
 +++
