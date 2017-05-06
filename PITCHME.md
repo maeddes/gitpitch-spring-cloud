@@ -119,7 +119,7 @@
 
 ### External configuration by file
 
-- Can be injected through a properties file
+- Can be injected through a property file
 - Prior to Spring Boot the config file had to be referenced
 
 ```java
@@ -150,7 +150,7 @@ public class Application {
 ### External configuration by file with Spring Boot
 
 - Spring Boot will read the properties in `src/main/resources/application.properties` by default
-- Spring Boot allows you to use yaml files instead of properties-
+- Spring Boot allows you to use yaml files instead of properties
 - Both examples will work
 
 ```yaml
