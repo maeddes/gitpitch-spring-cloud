@@ -206,7 +206,7 @@ class MessageRestController {
 
 +++
 
-### Point the browser to: http://localhost:8080/configprops
+Point the browser to: http://localhost:8080/configprops
 
 ```json
 "applicationProperties": {
@@ -228,7 +228,7 @@ class MessageRestController {
 
 +++
 
-# Config Server 
+## Config Server 
 ### to address limitations
 
 +++
@@ -278,9 +278,7 @@ spring:
 
 +++
 
-Embed
-
-https://github.com/maeddes/config-server
+<iframe data-src="https://github.com/maeddes/config-server" height="480px" width="100%"></iframe>
 
 +++
 
@@ -359,7 +357,13 @@ mhs@R2-D2:~$ curl -d{} http://127.0.0.1:8080/refresh
 
 +++
 
-Cloud Service Bus
+# start.spring.io
+
+Config Server
+- Config Server
+
+Config Client
+- Config Server
 
 ---
 
@@ -376,9 +380,8 @@ Cloud Service Bus
 
 +++ 
 
-### Alternative Service Discovery and Registry
-
-- 
+> Microservices is defined as a loosely-coupled, service-oriented architecture with bounded context.
+Adrian Cockroft, 2014
 
 +++
 
@@ -423,16 +426,6 @@ eureka:
     registerWithEureka: false
     fetchRegistry: false
 ```
-+++
-
-(image goes here)
-
-+++
-
-# start.spring.io
-
--
-
 +++
 
 ```java
@@ -643,7 +636,18 @@ class ServiceInstanceRestController{
 
 +++
 
+# start.spring.io
 
+Eureka Server
+- Eureka Server
+
+Eureka Client
+- Eureka Discovery
+- Web
+
+Eureka Consumer
+- Eureka Discovery
+- Web
 
 ---
 
@@ -681,7 +685,7 @@ public class MhsHystrixDashboardApplication {
 +++
 
 http://localhost:8080/hystrix
-![Dashboard](http://ryanjbaxter.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-07-at-9.28.44-AM.png)
+![Dashboard](img/hystrix_login.jpg)
 
 +++
 ### Failing Service
@@ -783,9 +787,24 @@ public class MhsCircuitBreakerApp {
 
 ## Stream
 
+![Hystrix Stream](img/hystrix_stream.jpg)
+
 +++
 
 ## Dashboard
+
+![Hystrix Dashboard](img/hystrix_dashboard.jpg)
+
+---
+
+# start.spring.io
+
+Hystrix Dashboard
+- Config Server
+
+Hystrix Client
+- Hystrix
+- Actuator (for Stream)
 
 ---
 
