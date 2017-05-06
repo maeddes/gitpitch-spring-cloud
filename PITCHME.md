@@ -101,7 +101,8 @@
 
 ### Store config in the environment
 
-An app’s config is everything that is likely to vary between deploys (staging, production, developer environments, etc). This includes:
+<p>An app’s config is everything that is likely to vary between deploys (staging, production, developer environments, etc). This includes:
+</p>
 
 - Resource handles to the database, Memcached, and other backing services
 - Credentials to external services such as Amazon S3 or Twitter
@@ -109,7 +110,11 @@ An app’s config is everything that is likely to vary between deploys (staging,
 
 +++
 
-## Apps sometimes store config as constants in the code. This is a violation of twelve-factor, which requires strict separation of config from code. Config varies substantially across deploys, code does not.
+## Rules
+
+* Apps sometimes store config as constants in the code. 
+* This is a violation of twelve-factor, which requires strict separation of config from code. 
+* Config varies substantially across deploys, code does not.
 
 +++
 
