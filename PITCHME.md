@@ -601,18 +601,13 @@ spring:
 
 +++
 
-# start.spring.io
+## start.spring.io
 
-Eureka Server
+
 - Eureka Server
-
-Eureka Client
 - Eureka Discovery
 - Web
 
-Eureka Consumer
-- Eureka Discovery
-- Web
 
 ---
 
@@ -713,12 +708,9 @@ public String serviceInvocation(){
 ```
 +++
 
-# start.spring.io
+## start.spring.io
 
-Ribbon
 - Ribbon
-
-Feign
 - Feign
 
 ---
@@ -877,10 +869,7 @@ public class MhsCircuitBreakerApp {
 
 # start.spring.io
 
-Hystrix Dashboard
-- Config Server
-
-Hystrix Client
+- Hystrix Dashboard
 - Hystrix
 - Actuator (for Stream)
 
