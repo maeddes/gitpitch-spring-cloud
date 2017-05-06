@@ -9,7 +9,7 @@
 * Overview Spring Cloud 
 * Config Server
 * Service Registry
-* Reslilience
+* Resilience
 * References
 * Exercises
 
@@ -55,7 +55,7 @@
 
 +++
 
-# Spring Cloud Netflix
+## Spring Cloud Netflix
 
 - originated as Netflix OSS
 - based on Spring implementations
@@ -74,11 +74,9 @@
 
 +++
 
-# Spring Cloud Services
+## Spring Cloud Services
 
 ![SCS](https://3.bp.blogspot.com/-nvGF74M_hyY/V1zWlx_0RLI/AAAAAAAAPL0/CPwG4Azzpc4b9Kx2LhHkAxdkpqxkwLtbgCLcB/s1600/SpringCloudServices.png)
-
-- integration with Cloud Foundry
 
 +++
 
