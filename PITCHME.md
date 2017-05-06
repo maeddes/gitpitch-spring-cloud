@@ -382,6 +382,7 @@ Config Client
 +++ 
 
 > Microservices is defined as a loosely-coupled, service-oriented architecture with bounded context.
+
 Adrian Cockroft, 2014
 
 +++
@@ -389,7 +390,6 @@ Adrian Cockroft, 2014
 ### High - Level Architecture
 
 ![Eureka](https://docs.pivotal.io/spring-cloud-services/1-2/images/service-registry/Netflix-Eureka-d1.png)
-(javaworld.com)
 
 +++
 
