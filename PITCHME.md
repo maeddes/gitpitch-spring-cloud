@@ -1,12 +1,12 @@
 
-# Spring Cloud Services
+# Spring Cloud 
 
 
 ---
 
 ## Agenda
 
-* Overview Spring Cloud Services
+* Overview Spring Cloud 
 * Config Server
 * Eureka Service Registry
 * Hystrix
@@ -17,13 +17,22 @@
 
 ## Sources
 
- * docs.cloudfoundry.org
- * twitter
+ * https://cloud.spring.io
+ * https://12factor.net
  * slideshare
  * github
- * https://12factor.net
+ * See References & Reading List
 
 ---
+
+## Taxonomy
+
+- Spring Boot
+- Spring Cloud
+- Spring Cloud Netflix
+- Spring Cloud Services
+
++++
 
 # Config Server
 
