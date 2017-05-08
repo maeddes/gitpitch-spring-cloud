@@ -900,3 +900,27 @@ Part 2:
 - http://www.baeldung.com/intro-to-feign
 - http://ryanjbaxter.com/2015/10/12/building-cloud-native-apps-with-spring-part-5/
 - https://dzone.com/articles/spring-cloud-netflix-load-balancer-with-ribbonfeig
+
+---
+
+# Exercises I
+
++++
+
+- Build a simple "Hello, World" Micro Service, which exposes the service via REST
+- Implement a config server that talks to a local or remote git repo
+- Extend the Micro Service to receive the config from the config server
+- Trigger a config update in the Micro Service
+- Implement a Eureka server
+- Extend the Micro Service to be registered at the Eureka Server
+- Make the Micro Service scalable to multiple instances
+
+# Exercises II
+
++++
+
+- Implement a Eureka client to discover available Micro Services
+- Extend the Eureka client to invoke the service of your Micro Service
+- Implement a Hystrix Dashboard
+- Extend the Micro Service to have a fallback method to the service method
+- Display the Micro Service in the Hystrix Dashboard
