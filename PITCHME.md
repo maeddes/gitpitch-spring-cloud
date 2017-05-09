@@ -7,7 +7,7 @@
 ## Agenda
 
 * Overview Spring Cloud 
-* Config Server
+* Config Server //ToDo
 * Service Registry
 * Resilience
 * References
