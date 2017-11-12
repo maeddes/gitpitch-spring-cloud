@@ -609,7 +609,7 @@ spring:
 ```
 
 - can also be empty or non-existent
-- client does not need to ne looked up
+- client does not need to be looked up
 - better style still ;-)
 
 +++
