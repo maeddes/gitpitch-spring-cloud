@@ -50,13 +50,25 @@ Review
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">For those on <a href="http://t.co/uB4AvizyvG">http://t.co/uB4AvizyvG</a> saying it’s Spring Boot is “the framework for a framework” here’s a diagram: <a href="http://t.co/5LvwSiWKo0">pic.twitter.com/5LvwSiWKo0</a></p>&mdash; Phil Webb 🍃 (@phillip_webb) <a href="https://twitter.com/phillip_webb/status/641444531867680768?ref_src=twsrc%5Etfw">September 9, 2015</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
----
++++
+
+Spring Framework
+
+![Spring Framework Cupcake](https://pbs.twimg.com/media/CObcO3gUEAAKV6Y.jpg
+
++++
+
+Spring Boot
+
+![Spring Framework Cupcake](https://pbs.twimg.com/media/CObc-WbWoAEPaSz.jpg)
+
++++
 
 Spring Cloud
 
 ![Spring Cloud Cupcake](https://pbs.twimg.com/media/CObf6AQWEAIMkAS.jpg)
 
-+++
+---
 
 ## Patterns addressed
 
