@@ -54,7 +54,7 @@ Review
 
 Spring Framework
 
-![Spring Framework Cupcake](https://pbs.twimg.com/media/CObcO3gUEAAKV6Y.jpg
+![Spring Framework Cupcake](https://pbs.twimg.com/media/CObcO3gUEAAKV6Y.jpg)
 
 +++
 
