@@ -74,7 +74,7 @@ Spring Cloud
 
 - configuration management
 - service registry and discovery
-- resilience and service breakers
+- resilience and circuit breakers
 - intelligent routing and load balancing
 - and more ...
 
