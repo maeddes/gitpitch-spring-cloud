@@ -462,27 +462,6 @@ management:
 ```
 +++
 
-```java
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-
-@SpringBootApplication
-@EnableEurekaClient
-public class MhsEurekaServiceApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(MhsEurekaServiceApplication.class, args);
-	}
-}
-```
-
----
-
-### Eureka Service
-
-+++
-
 # Eureka Client
 
 - Both service provider and service consumer register at Eureka server as client
@@ -490,7 +469,7 @@ public class MhsEurekaServiceApplication {
 
 +++
 
-### Eureka client
+### Eureka service/client
 
 ```java
 import org.springframework.boot.SpringApplication;
@@ -509,7 +488,6 @@ public class MhsEurekaServiceApplication {
 ...
 }
 ```
-
 +++
 
 ### Exposed service
