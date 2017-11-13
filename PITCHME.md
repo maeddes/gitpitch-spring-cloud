@@ -43,7 +43,7 @@
 
 ![Spring Cloud](http://cdn.springtutorials.com/wp-content/uploads/2015/10/spring-cloud.png)
 
----
++++
 
 Review
 
@@ -68,7 +68,7 @@ Spring Cloud
 
 ![Spring Cloud Cupcake](https://pbs.twimg.com/media/CObf6AQWEAIMkAS.jpg)
 
----
++++
 
 ## Patterns addressed
 
