@@ -80,6 +80,11 @@ Spring Cloud
 
 +++
 
+![Spring Cloud](https://spring.io/img/homepage/diagram-distributed-systems.svg)
+
+
++++
+
 ## Spring Cloud Netflix
 
 - originated as Netflix OSS
