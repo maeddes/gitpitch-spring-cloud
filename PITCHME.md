@@ -382,7 +382,7 @@ spring:
 - It requires a POST action to the http://127.0.0.1:8080/refresh endpoint
 
 ```yaml
-mhs@R2-D2:~$ curl -d{} http://127.0.0.1:8080/refresh
+mhs@R2-D2:~$ curl -X POST http://127.0.0.1:8080/refresh
 ["config.property"]mhs@R2-D2:~$ 
 ```
 
