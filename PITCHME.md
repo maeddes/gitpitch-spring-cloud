@@ -98,7 +98,7 @@ Spring Cloud
 
 - Eureka - service registry and discovery
 - Hystrix - circuit breaker and dashboard
-- Feign - declarative REST lient
+- Feign - declarative REST client
 - Ribbon - cient-side load balancing
 - Zuul - routing & filtering
 
@@ -700,7 +700,7 @@ public String serviceInvocation(){
 
 - A declarative REST client
 - To simplify HTTP client calls
-- Only reuires declaration and annotation of an interface while the actual implementation will be provisioned at runtime
+- Only requires declaration and annotation of an interface while the actual implementation will be provisioned at runtime
 
 +++
 
