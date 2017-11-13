@@ -7,7 +7,7 @@
 ## Agenda
 
 * Overview Spring Cloud 
-* Config Server //ToDoStill
+* Config Server 
 * Service Registry
 * Resilience
 * References
@@ -236,7 +236,7 @@ class MessageRestController {
 
 +++
 
-Point the browser to: http://localhost:8080/configprops
+Point the browser to: http://localhost:8080/env
 
 ```json
 "applicationProperties": {
